@@ -18,12 +18,12 @@ public class Fueling {
     private String extras;
     private DrivingStyle drivingStyle;
     private RoutesType routesType;
-    private Car car;
+    private Vehicle vehicle;
     private TireType tireType;
 
     public Fueling() {}
 
-    public Fueling(Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double average_consumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Car car, TireType tireType) {
+    public Fueling(Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double average_consumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Vehicle vehicle, TireType tireType) {
         this.date = date;
         this.odometer = odometer;
         this.trip = trip;
@@ -35,11 +35,11 @@ public class Fueling {
         this.extras = extras;
         this.drivingStyle = drivingStyle;
         this.routesType = routesType;
-        this.car = car;
+        this.vehicle = vehicle;
         this.tireType = tireType;
     }
 
-    public Fueling(int id, Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double average_consumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Car car, TireType tireType) {
+    public Fueling(int id, Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double average_consumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Vehicle vehicle, TireType tireType) {
         this.id = id;
         this.date = date;
         this.odometer = odometer;
@@ -52,7 +52,7 @@ public class Fueling {
         this.extras = extras;
         this.drivingStyle = drivingStyle;
         this.routesType = routesType;
-        this.car = car;
+        this.vehicle = vehicle;
         this.tireType = tireType;
     }
 
@@ -167,12 +167,12 @@ public class Fueling {
         this.routesType = routesType;
     }
 
-    public Car getCar() {
-        return car;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public TireType getTireType() {
@@ -198,7 +198,7 @@ public class Fueling {
                 ", extras='" + extras + '\'' +
                 ", drivingStyle=" + drivingStyle +
                 ", routesType=" + routesType +
-                ", car=" + car +
+                ", vehicle=" + vehicle +
                 ", tireType=" + tireType +
                 '}';
     }

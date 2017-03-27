@@ -3,7 +3,7 @@ package pl.arnonedev.fuelanalyst.model;
 /**
  * Created by Arek on 2017-03-26.
  */
-public class Car {
+public class Vehicle {
     private int id;
     private String make;
     private String model;
@@ -18,9 +18,9 @@ public class Car {
     private OdometerUnit odometerUnit;
     private BodyType bodyType;
 
-    public Car() {}
+    public Vehicle() {}
 
-    public Car(String make, String model, int yearOfManufacture, int weight, String licenseNumber, int power, int engineCapacity, int odometer, FuelType fuelType, TransmissionType transmissionType, OdometerUnit odometerUnit, BodyType bodyType) {
+    public Vehicle(String make, String model, int yearOfManufacture, int weight, String licenseNumber, int power, int engineCapacity, int odometer, FuelType fuelType, TransmissionType transmissionType, OdometerUnit odometerUnit, BodyType bodyType) {
         this.make = make;
         this.model = model;
         this.yearOfManufacture = yearOfManufacture;
@@ -35,7 +35,7 @@ public class Car {
         this.bodyType = bodyType;
     }
 
-    public Car(int id, String make, String model, int yearOfManufacture, int weight, String licenseNumber, int power, int engineCapacity, int odometer, FuelType fuelType, TransmissionType transmissionType, OdometerUnit odometerUnit, BodyType bodyType) {
+    public Vehicle(int id, String make, String model, int yearOfManufacture, int weight, String licenseNumber, int power, int engineCapacity, int odometer, FuelType fuelType, TransmissionType transmissionType, OdometerUnit odometerUnit, BodyType bodyType) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -56,10 +56,10 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Car car = (Car) o;
+        Vehicle vehicle = (Vehicle) o;
 
-        if (id != car.id) return false;
-        return licenseNumber != null ? licenseNumber.equals(car.licenseNumber) : car.licenseNumber == null;
+        if (id != vehicle.id) return false;
+        return licenseNumber != null ? licenseNumber.equals(vehicle.licenseNumber) : vehicle.licenseNumber == null;
     }
 
     @Override
@@ -175,7 +175,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
+        return "Vehicle{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +

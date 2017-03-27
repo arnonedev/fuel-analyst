@@ -12,27 +12,27 @@ public class Reminder {
     private int odometer;
     private int odometerRepeating;
     private String description;
-    private Car car;
+    private Vehicle vehicle;
 
     public Reminder() {}
 
-    public Reminder(Date date, int dateRepeating, int odometer, int odometerRepeating, String description, Car car) {
+    public Reminder(Date date, int dateRepeating, int odometer, int odometerRepeating, String description, Vehicle vehicle) {
         this.date = date;
         this.dateRepeating = dateRepeating;
         this.odometer = odometer;
         this.odometerRepeating = odometerRepeating;
         this.description = description;
-        this.car = car;
+        this.vehicle = vehicle;
     }
 
-    public Reminder(int id, Date date, int dateRepeating, int odometer, int odometerRepeating, String description, Car car) {
+    public Reminder(int id, Date date, int dateRepeating, int odometer, int odometerRepeating, String description, Vehicle vehicle) {
         this.id = id;
         this.date = date;
         this.dateRepeating = dateRepeating;
         this.odometer = odometer;
         this.odometerRepeating = odometerRepeating;
         this.description = description;
-        this.car = car;
+        this.vehicle = vehicle;
     }
 
     @Override
@@ -98,12 +98,12 @@ public class Reminder {
         this.description = description;
     }
 
-    public Car getCar() {
-        return car;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     @Override
@@ -115,7 +115,7 @@ public class Reminder {
                 ", odometer=" + odometer +
                 ", odometerRepeating=" + odometerRepeating +
                 ", description='" + description + '\'' +
-                ", car=" + car +
+                ", vehicle=" + vehicle +
                 '}';
     }
 }

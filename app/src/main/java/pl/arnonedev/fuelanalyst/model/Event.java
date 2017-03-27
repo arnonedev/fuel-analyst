@@ -10,25 +10,25 @@ public class Event {
     private boolean reminder;
     private String description;
     private Date date;
-    private Car car;
+    private Vehicle vehicle;
     private EventType eventType;
 
     public Event() {}
 
-    public Event(boolean reminder, String description, Date date, Car car, EventType eventType) {
+    public Event(boolean reminder, String description, Date date, Vehicle vehicle, EventType eventType) {
         this.reminder = reminder;
         this.description = description;
         this.date = date;
-        this.car = car;
+        this.vehicle = vehicle;
         this.eventType = eventType;
     }
 
-    public Event(int id, boolean reminder, String description, Date date, Car car, EventType eventType) {
+    public Event(int id, boolean reminder, String description, Date date, Vehicle vehicle, EventType eventType) {
         this.id = id;
         this.reminder = reminder;
         this.description = description;
         this.date = date;
-        this.car = car;
+        this.vehicle = vehicle;
         this.eventType = eventType;
     }
 
@@ -79,12 +79,12 @@ public class Event {
         this.date = date;
     }
 
-    public Car getCar() {
-        return car;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public EventType getEventType() {
@@ -102,7 +102,7 @@ public class Event {
                 ", reminder=" + reminder +
                 ", description='" + description + '\'' +
                 ", date=" + date +
-                ", car=" + car +
+                ", vehicle=" + vehicle +
                 ", eventType=" + eventType +
                 '}';
     }
