@@ -1,5 +1,6 @@
 package pl.arnonedev.fuelanalyst.persistence;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -28,5 +29,17 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+    }
+
+    public void save(SQLiteDatabase db, ContentValues values, String tableName) {
+        db.insert(tableName, null, values);
+    }
+
+    public void modify(SQLiteDatabase db, ContentValues values, String tableName, String whereClause, String... whereArgs) {
+        db.update(tableName, values, whereClause, whereArgs);
+    }
+
+    public void delete(SQLiteDatabase db, String tableName, String whereClause, String... whereArgs) {
+        db.delete(tableName, whereClause, whereArgs);
     }
 }
