@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Arek on 2017-03-26.
  */
 public class Event {
-    private int id;
+    private long id;
     private boolean reminder;
     private String description;
     private Date date;
@@ -23,7 +23,7 @@ public class Event {
         this.eventType = eventType;
     }
 
-    public Event(int id, boolean reminder, String description, Date date, Vehicle vehicle, EventType eventType) {
+    public Event(long id, boolean reminder, String description, Date date, Vehicle vehicle, EventType eventType) {
         this.id = id;
         this.reminder = reminder;
         this.description = description;
@@ -44,14 +44,14 @@ public class Event {
 
     @Override
     public int hashCode() {
+        return (int)id;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

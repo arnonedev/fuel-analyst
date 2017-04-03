@@ -31,8 +31,8 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void save(SQLiteDatabase db, ContentValues values, String tableName) {
-        db.insert(tableName, null, values);
+    public long save(SQLiteDatabase db, ContentValues values, String tableName) {
+        return db.insert(tableName, null, values);
     }
 
     public void modify(SQLiteDatabase db, ContentValues values, String tableName, String whereClause, String... whereArgs) {

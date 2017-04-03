@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Arek on 2017-03-26.
  */
 public class Reminder {
-    private int id;
+    private long id;
     private Date date;
     private int dateRepeating;
     private int odometer;
@@ -25,7 +25,7 @@ public class Reminder {
         this.vehicle = vehicle;
     }
 
-    public Reminder(int id, Date date, int dateRepeating, int odometer, int odometerRepeating, String description, Vehicle vehicle) {
+    public Reminder(long id, Date date, int dateRepeating, int odometer, int odometerRepeating, String description, Vehicle vehicle) {
         this.id = id;
         this.date = date;
         this.dateRepeating = dateRepeating;
@@ -47,14 +47,14 @@ public class Reminder {
 
     @Override
     public int hashCode() {
+        return (int)id;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

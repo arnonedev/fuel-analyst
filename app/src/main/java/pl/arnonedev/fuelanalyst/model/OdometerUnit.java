@@ -8,18 +8,18 @@ public enum OdometerUnit {
     METRIC("Metric",16);
 
     private String title;
-    private int dbID;
+    private int dbId;
 
-    OdometerUnit(String title, int dbID) {
+    OdometerUnit(String title, int dbId) {
         this.title = title;
-        this.dbID = dbID;
+        this.dbId = dbId;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public int getDbID() {
-        return dbID;
+    public int getDbId() {
+        return dbId;
     }
 }

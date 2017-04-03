@@ -4,7 +4,7 @@ package pl.arnonedev.fuelanalyst.model;
  * Created by Arek on 2017-03-26.
  */
 public class Vehicle {
-    private int id;
+    private long id;
     private String make;
     private String model;
     private int yearOfManufacture;
@@ -35,7 +35,7 @@ public class Vehicle {
         this.bodyType = bodyType;
     }
 
-    public Vehicle(int id, String make, String model, int yearOfManufacture, int weight, String licenseNumber, int power, int engineCapacity, int odometer, FuelType fuelType, TransmissionType transmissionType, OdometerUnit odometerUnit, BodyType bodyType) {
+    public Vehicle(long id, String make, String model, int yearOfManufacture, int weight, String licenseNumber, int power, int engineCapacity, int odometer, FuelType fuelType, TransmissionType transmissionType, OdometerUnit odometerUnit, BodyType bodyType) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -64,16 +64,16 @@ public class Vehicle {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int)id;
         result = 31 * result + (licenseNumber != null ? licenseNumber.hashCode() : 0);
         return result;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

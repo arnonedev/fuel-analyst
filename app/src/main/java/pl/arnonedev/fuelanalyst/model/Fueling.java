@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Arek on 2017-03-26.
  */
 public class Fueling {
-    private int id;
+    private long id;
     private Date date;
     private int odometer;
     private double trip;
@@ -39,7 +39,7 @@ public class Fueling {
         this.tireType = tireType;
     }
 
-    public Fueling(int id, Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double average_consumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Vehicle vehicle, TireType tireType) {
+    public Fueling(long id, Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double average_consumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Vehicle vehicle, TireType tireType) {
         this.id = id;
         this.date = date;
         this.odometer = odometer;
@@ -68,14 +68,14 @@ public class Fueling {
 
     @Override
     public int hashCode() {
+        return (int)id;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
