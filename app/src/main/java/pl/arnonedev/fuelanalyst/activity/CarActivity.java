@@ -1,5 +1,6 @@
 package pl.arnonedev.fuelanalyst.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,8 +26,8 @@ public class CarActivity extends AppCompatActivity {
     }
 
     public void addNewCar(View view) {
-        Toast toast = Toast.makeText(this, "addNewCar", Toast.LENGTH_LONG);
-        toast.show();
+        Intent intent = new Intent(this, AddVechicleActivity.class);
+        startActivity(intent);
     }
 
 }
