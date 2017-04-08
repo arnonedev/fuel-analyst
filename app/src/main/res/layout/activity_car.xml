@@ -25,11 +25,12 @@
     <include layout="@layout/content_car"/>
 
     <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/add_new_car_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
+            android:onClick="addNewCar"
             app:srcCompat="@android:drawable/ic_menu_add" app:backgroundTint="@android:color/holo_green_dark"/>
 
 </android.support.design.widget.CoordinatorLayout>
