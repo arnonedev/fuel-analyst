@@ -14,4 +14,231 @@
         tools:showIn="@layout/activity_add_vechicle"
         tools:context="pl.arnonedev.fuelanalyst.activity.AddVechicleActivity">
 
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
+        <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:columnCount="2" android:rowCount="12">
+
+            <TextView
+                    android:text="Make"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="0"/>
+            <EditText
+                    android:id="@+id/vehicle_make_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_row="0"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"/>
+            <EditText
+                    android:id="@+id/vehicle_model_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_row="1"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Year of manufacture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"/>
+            <EditText
+                    android:id="@+id/year_of_manufacture_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="number"
+                    android:layout_row="2"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="0"/>
+            <EditText
+                    android:id="@+id/weight_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="number"
+                    android:layout_row="3"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Fuel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_row="4"
+                    android:layout_column="0"/>
+            <Spinner
+                    android:id="@+id/fuel_type_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:entries="@array/fuel_types"
+                    android:prompt="@string/choose_a_fuel_type"
+                    android:layout_row="4"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Licence number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="5"
+                    android:layout_column="0"/>
+            <EditText
+                    android:id="@+id/licence_number_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="number"
+                    android:layout_row="5"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="6"
+                    android:layout_column="0"/>
+            <EditText
+                    android:id="@+id/power_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="number"
+                    android:layout_row="6"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Engine capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="7"
+                    android:layout_column="0"/>
+            <EditText
+                    android:id="@+id/engine_capacity_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="number"
+                    android:layout_row="7"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Odometer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="8"
+                    android:layout_column="0"/>
+            <EditText
+                    android:id="@+id/odometer_add_vehicle_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="number"
+                    android:layout_row="8"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Transmission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_row="9"
+                    android:layout_column="0"/>
+            <Spinner
+                    android:id="@+id/transmission_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:entries="@array/transmission_types"
+                    android:prompt="@string/choose_a_transmission"
+                    android:layout_row="9"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Odometer unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_row="10"
+                    android:layout_column="0"/>
+            <Spinner
+                    android:id="@+id/odometer_unit_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:entries="@array/odometer_units"
+                    android:prompt="@string/choose_a_odometer_unit"
+                    android:layout_row="10"
+                    android:layout_column="1"/>
+
+            <TextView
+                    android:text="Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_row="11"
+                    android:layout_column="0"/>
+            <Spinner
+                    android:id="@+id/body_type_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:entries="@array/body_types"
+                    android:prompt="@string/choose_a_body_type"
+                    android:layout_row="11"
+                    android:layout_column="1"/>
+        </GridLayout>
+    </ScrollView>
 </RelativeLayout>

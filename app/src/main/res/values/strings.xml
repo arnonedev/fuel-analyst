@@ -3,4 +3,51 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_car">CarActivity</string>
     <string name="title_activity_add_vechicle">AddVechicleActivity</string>
+
+    <!-- fuel types -->
+    <string name="choose_a_fuel_type">Choose a fuel type</string>
+    <string-array name="fuel_types">
+        <item>Diesel</item>
+        <item>Petrol</item>
+        <item>Petrol + Gas</item>
+        <item>Electric</item>
+        <item>Hybrid</item>
+        <item>Gas</item>
+    </string-array>
+
+    <!-- transmission types -->
+    <string name="choose_a_transmission">Choose a transmission</string>
+    <string-array name="transmission_types">
+        <item>Manual</item>
+        <item>Automatic</item>
+    </string-array>
+
+    <!-- odometer units -->
+    <string name="choose_a_odometer_unit">Choose a odometer unit</string>
+    <string-array name="odometer_units">
+        <item>Mile</item>
+        <item>Metric</item>
+    </string-array>
+
+    <!-- body types -->
+    <string name="choose_a_body_type">Choose a body type</string>
+    <string-array name="body_types">
+        <item>Cabriolet</item>
+        <item>Coupe</item>
+        <item>Wagon</item>
+        <item>Sedan</item>
+        <item>SUV</item>
+        <item>Dual cowl</item>
+        <item>Fastback</item>
+        <item>Hatchback</item>
+        <item>Liftback</item>
+        <item>Limousine</item>
+        <item>Mikrovan</item>
+        <item>Minivan</item>
+        <item>Pick-up</item>
+        <item>Roadster</item>
+        <item>Targa</item>
+        <item>VAN</item>
+    </string-array>
+
 </resources>
