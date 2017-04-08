@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="pl.arnonedev.fuelanalyst.activity.CarActivity">
+        tools:context="pl.arnonedev.fuelanalyst.activity.AddVechicleActivity">
 
     <android.support.design.widget.AppBarLayout
             android:layout_height="wrap_content"
@@ -17,20 +17,29 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@android:color/holo_green_dark"
+                android:background="?attr/colorPrimary"
                 app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_car"/>
+    <include layout="@layout/content_add_vechicle"/>
 
     <android.support.design.widget.FloatingActionButton
-            android:id="@+id/add_new_car_fab"
+            android:id="@+id/accept_values_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            android:onClick="addNewCar"
-            app:srcCompat="@drawable/add" app:backgroundTint="@android:color/holo_green_dark"/>
+            android:onClick="accept"
+            app:srcCompat="@drawable/accept" app:backgroundTint="@android:color/holo_green_dark"/>
+
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/reject_values_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:onClick="reject"
+            app:srcCompat="@drawable/reject" app:layout_anchorGravity="center_vertical|center_horizontal"
+            android:layout_gravity="bottom|left" app:backgroundTint="@android:color/holo_red_dark"/>
 
 </android.support.design.widget.CoordinatorLayout>
