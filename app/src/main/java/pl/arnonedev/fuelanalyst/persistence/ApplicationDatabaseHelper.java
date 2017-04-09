@@ -40,8 +40,8 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper {
         db.update(tableName, values, whereClause, whereArgs);
     }
 
-    public void delete(SQLiteDatabase db, String tableName, String whereClause, String... whereArgs) {
-        db.delete(tableName, whereClause, whereArgs);
+    public int delete(SQLiteDatabase db, String tableName, String whereClause, String... whereArgs) {
+        return db.delete(tableName, whereClause, whereArgs);
     }
 
     public Cursor find(SQLiteDatabase db, String tableName, String[] columns, String whereClause, String[] whereArgs,

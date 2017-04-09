@@ -2,89 +2,117 @@ package pl.arnonedev.fuelanalyst.helper;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteException;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import pl.arnonedev.fuelanalyst.model.*;
-import pl.arnonedev.fuelanalyst.persistence.ApplicationDatabaseHelper;
 import pl.arnonedev.fuelanalyst.persistence.table.VehicleTable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Arek on 2017-03-27.
  */
-public class VehicleHelper implements IVehicleHelper {
-    private AppCompatActivity activity = null;
-    private ApplicationDatabaseHelper applicationDatabaseHelper = null;
-    private SQLiteDatabase database = null;
+public class VehicleHelper extends DatabaseModelHelper<Vehicle> {
 
     public VehicleHelper(AppCompatActivity activity) {
-        this.activity = activity;
-        this.applicationDatabaseHelper = new ApplicationDatabaseHelper(activity);
-        this.database = this.applicationDatabaseHelper.getWritableDatabase();
+        super(activity);
     }
 
     @Override
     public Vehicle save(Vehicle vehicle) {
-        ContentValues values = new ContentValues();
-        values.put(VehicleTable.ID_COLUMN, vehicle.getId());
-        values.put(VehicleTable.MAKE_COLUMN, vehicle.getMake());
-        values.put(VehicleTable.MODEL_COLUMN, vehicle.getModel());
-        values.put(VehicleTable.YEAR_OF_MANUFACTURE_COLUMN, vehicle.getYearOfManufacture());
-        values.put(VehicleTable.ID_FUEL_TYPE_COLUMN, vehicle.getFuelType().getDbId());
-        values.put(VehicleTable.WEIGHT_COLUMN, vehicle.getWeight());
-        values.put(VehicleTable.LICENSE_NUMBER_COLUMN, vehicle.getLicenseNumber());
-        values.put(VehicleTable.POWER_COLUMN, vehicle.getPower());
-        values.put(VehicleTable.ENGINE_CAPACITY_COLUMN, vehicle.getEngineCapacity());
-        values.put(VehicleTable.ODOMETER_COLUMN, vehicle.getOdometer());
-        values.put(VehicleTable.ID_TRANSMISSION_COLUMN, vehicle.getTransmissionType().getDbId());
-        values.put(VehicleTable.ID_ODOMETER_UNIT_COLUMN, vehicle.getOdometerUnit().getDbId());
-        values.put(VehicleTable.ID_BODY_TYPE_COLUMN, vehicle.getBodyType().getDbId());
-
-        long vehicleId = applicationDatabaseHelper.save(this.database, values, VehicleTable.TABLE_NAME);
-        vehicle.setId(vehicleId);
+        try {
+            database = this.applicationDatabaseHelper.getWritableDatabase();
+            ContentValues values = getContentValuesFromVehicle(vehicle);
+            long vehicleId = applicationDatabaseHelper.save(database, values, VehicleTable.TABLE_NAME);
+            vehicle.setId(vehicleId);
+            database.close();
+        } catch (SQLiteException e) {
+            Log.e(VehicleHelper.class.getName(), "Save vehicle error " + e);
+        }
         return vehicle;
     }
 
     @Override
     public Vehicle refresh(Vehicle vehicle) {
-        Vehicle refreshedVehicle = new Vehicle();
-        Cursor cursor = applicationDatabaseHelper.find(database, VehicleTable.TABLE_NAME, VehicleTable.COLUMNS, "_id = ?",
-                new String[]{Integer.toString((int) vehicle.getId())}, null, null, null);
-        if (cursor.moveToFirst()) {
-            refreshedVehicle.setId(vehicle.getId());
-            refreshedVehicle.setMake(cursor.getString(1));
-            refreshedVehicle.setModel(cursor.getString(2));
-            refreshedVehicle.setYearOfManufacture(cursor.getInt(3));
-            refreshedVehicle.setFuelType(getFuelById(cursor.getInt(4)));
-            refreshedVehicle.setWeight(cursor.getInt(5));
-            refreshedVehicle.setLicenseNumber(cursor.getString(6));
-            refreshedVehicle.setPower(cursor.getInt(7));
-            refreshedVehicle.setEngineCapacity(cursor.getInt(8));
-            refreshedVehicle.setOdometer(cursor.getInt(9));
-            refreshedVehicle.setTransmissionType(getTransmissionTypeById(cursor.getInt(10)));
-            refreshedVehicle.setOdometerUnit(getOdometerUnitById(cursor.getInt(11)));
-            refreshedVehicle.setBodyType(getBodyTypeById(cursor.getInt(12)));
+        Vehicle refreshedVehicle = null;
+        try {
+            database = this.applicationDatabaseHelper.getWritableDatabase();
+            Cursor cursor = applicationDatabaseHelper.find(database, VehicleTable.TABLE_NAME, VehicleTable.COLUMNS, "_id = ?",
+                    new String[]{Integer.toString((int) vehicle.getId())}, null, null, null);
+            if (cursor.moveToFirst()) {
+                refreshedVehicle = getVehicleFromCursor(cursor);
+            }
+            database.close();
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(VehicleHelper.class.getName(), "Refresh vehicle error " + e);
         }
-        return refreshedVehicle.getId() == 0 ? vehicle : refreshedVehicle;
+        return refreshedVehicle == null ? vehicle : refreshedVehicle;
     }
 
     @Override
     public Vehicle modify(Vehicle vehicle) {
-        return null;
+        try {
+            database = this.applicationDatabaseHelper.getWritableDatabase();
+            ContentValues values = getContentValuesFromVehicle(vehicle);
+            applicationDatabaseHelper.modify(database, values, VehicleTable.TABLE_NAME, "_id = ?", Long.toString(vehicle.getId()));
+            database.close();
+        } catch (SQLiteException e) {
+            Log.e(VehicleHelper.class.getName(), "Modify vehicle error " + e);
+        }
+        return vehicle;
     }
 
     @Override
     public Vehicle find(int id) {
-        return null;
+        Vehicle foundedVehicle = null;
+        try {
+            database = this.applicationDatabaseHelper.getWritableDatabase();
+            Cursor cursor = applicationDatabaseHelper.find(database, VehicleTable.TABLE_NAME, VehicleTable.COLUMNS, "_id = ?",
+                    new String[]{Integer.toString(id)}, null, null, null);
+            if (cursor.moveToFirst()) {
+                foundedVehicle = getVehicleFromCursor(cursor);
+            }
+            database.close();
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(VehicleHelper.class.getName(), "Find vehicle error " + e);
+        }
+        return foundedVehicle;
     }
 
     @Override
-    public Vehicle findAll() {
-        return null;
+    public List<Vehicle> findAll() {
+        List<Vehicle> foundedVehicles = new ArrayList<>();
+        try {
+            database = this.applicationDatabaseHelper.getWritableDatabase();
+            Cursor cursor = applicationDatabaseHelper.find(database, VehicleTable.TABLE_NAME, VehicleTable.COLUMNS, null,
+                    null, null, null, null);
+            while (cursor.moveToNext()) {
+                foundedVehicles.add(getVehicleFromCursor(cursor));
+            }
+            database.close();
+            cursor.close();
+        } catch (SQLiteException e) {
+            Log.e(VehicleHelper.class.getName(), "Find vehicles error " + e);
+        }
+        return foundedVehicles;
     }
 
     @Override
     public boolean delete(Vehicle vehicle) {
-        return false;
+        int result = 0;
+        try {
+            database = this.applicationDatabaseHelper.getWritableDatabase();
+            result = applicationDatabaseHelper.delete(database, VehicleTable.TABLE_NAME, "_id = ?", Long.toString(vehicle.getId()));
+            database.close();
+        } catch (SQLiteException e) {
+            Log.e(VehicleHelper.class.getName(), "Delete vehicle error " + e);
+        }
+        return result != 0;
     }
 
     private FuelType getFuelById(int id) {
@@ -125,5 +153,41 @@ public class VehicleHelper implements IVehicleHelper {
             }
         }
         return null;
+    }
+
+    private Vehicle getVehicleFromCursor(Cursor cursor) {
+        Vehicle result = new Vehicle();
+        result.setId(cursor.getInt(0));
+        result.setMake(cursor.getString(1));
+        result.setModel(cursor.getString(2));
+        result.setYearOfManufacture(cursor.getInt(3));
+        result.setFuelType(getFuelById(cursor.getInt(4)));
+        result.setWeight(cursor.getInt(5));
+        result.setLicenseNumber(cursor.getString(6));
+        result.setPower(cursor.getInt(7));
+        result.setEngineCapacity(cursor.getInt(8));
+        result.setOdometer(cursor.getInt(9));
+        result.setTransmissionType(getTransmissionTypeById(cursor.getInt(10)));
+        result.setOdometerUnit(getOdometerUnitById(cursor.getInt(11)));
+        result.setBodyType(getBodyTypeById(cursor.getInt(12)));
+        return result;
+    }
+
+    private ContentValues getContentValuesFromVehicle(Vehicle vehicle) {
+        ContentValues resutl = new ContentValues();
+        resutl.put(VehicleTable.ID_COLUMN, vehicle.getId());
+        resutl.put(VehicleTable.MAKE_COLUMN, vehicle.getMake());
+        resutl.put(VehicleTable.MODEL_COLUMN, vehicle.getModel());
+        resutl.put(VehicleTable.YEAR_OF_MANUFACTURE_COLUMN, vehicle.getYearOfManufacture());
+        resutl.put(VehicleTable.ID_FUEL_TYPE_COLUMN, vehicle.getFuelType().getDbId());
+        resutl.put(VehicleTable.WEIGHT_COLUMN, vehicle.getWeight());
+        resutl.put(VehicleTable.LICENSE_NUMBER_COLUMN, vehicle.getLicenseNumber());
+        resutl.put(VehicleTable.POWER_COLUMN, vehicle.getPower());
+        resutl.put(VehicleTable.ENGINE_CAPACITY_COLUMN, vehicle.getEngineCapacity());
+        resutl.put(VehicleTable.ODOMETER_COLUMN, vehicle.getOdometer());
+        resutl.put(VehicleTable.ID_TRANSMISSION_COLUMN, vehicle.getTransmissionType().getDbId());
+        resutl.put(VehicleTable.ID_ODOMETER_UNIT_COLUMN, vehicle.getOdometerUnit().getDbId());
+        resutl.put(VehicleTable.ID_BODY_TYPE_COLUMN, vehicle.getBodyType().getDbId());
+        return resutl;
     }
 }
