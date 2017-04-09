@@ -1,9 +1,10 @@
 package pl.arnonedev.fuelanalyst.helper;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
-import pl.arnonedev.fuelanalyst.model.Vehicle;
+import pl.arnonedev.fuelanalyst.model.*;
 import pl.arnonedev.fuelanalyst.persistence.ApplicationDatabaseHelper;
 import pl.arnonedev.fuelanalyst.persistence.table.VehicleTable;
 
@@ -45,7 +46,25 @@ public class VehicleHelper implements IVehicleHelper {
 
     @Override
     public Vehicle refresh(Vehicle vehicle) {
-        return null;
+        Vehicle refreshedVehicle = new Vehicle();
+        Cursor cursor = applicationDatabaseHelper.find(database, VehicleTable.TABLE_NAME, VehicleTable.COLUMNS, "_id = ?",
+                new String[]{Integer.toString((int) vehicle.getId())}, null, null, null);
+        if (cursor.moveToFirst()) {
+            refreshedVehicle.setId(vehicle.getId());
+            refreshedVehicle.setMake(cursor.getString(1));
+            refreshedVehicle.setModel(cursor.getString(2));
+            refreshedVehicle.setYearOfManufacture(cursor.getInt(3));
+            refreshedVehicle.setFuelType(getFuelById(cursor.getInt(4)));
+            refreshedVehicle.setWeight(cursor.getInt(5));
+            refreshedVehicle.setLicenseNumber(cursor.getString(6));
+            refreshedVehicle.setPower(cursor.getInt(7));
+            refreshedVehicle.setEngineCapacity(cursor.getInt(8));
+            refreshedVehicle.setOdometer(cursor.getInt(9));
+            refreshedVehicle.setTransmissionType(getTransmissionTypeById(cursor.getInt(10)));
+            refreshedVehicle.setOdometerUnit(getOdometerUnitById(cursor.getInt(11)));
+            refreshedVehicle.setBodyType(getBodyTypeById(cursor.getInt(12)));
+        }
+        return refreshedVehicle.getId() == 0 ? vehicle : refreshedVehicle;
     }
 
     @Override
@@ -66,5 +85,45 @@ public class VehicleHelper implements IVehicleHelper {
     @Override
     public boolean delete(Vehicle vehicle) {
         return false;
+    }
+
+    private FuelType getFuelById(int id) {
+        FuelType[] fuelTypes = FuelType.values();
+        for (FuelType fuelType : fuelTypes) {
+            if (fuelType.getDbId() == id) {
+                return fuelType;
+            }
+        }
+        return null;
+    }
+
+    private TransmissionType getTransmissionTypeById(int id) {
+        TransmissionType[] transmissionTypes = TransmissionType.values();
+        for (TransmissionType transmissionType : transmissionTypes) {
+            if (transmissionType.getDbId() == id) {
+                return transmissionType;
+            }
+        }
+        return null;
+    }
+
+    private OdometerUnit getOdometerUnitById(int id) {
+        OdometerUnit[] odometerUnits = OdometerUnit.values();
+        for (OdometerUnit odometerUnit : odometerUnits) {
+            if (odometerUnit.getDbId() == id) {
+                return odometerUnit;
+            }
+        }
+        return null;
+    }
+
+    private BodyType getBodyTypeById(int id) {
+        BodyType[] bodyTypes = BodyType.values();
+        for (BodyType bodyType : bodyTypes) {
+            if (bodyType.getDbId() == id) {
+                return bodyType;
+            }
+        }
+        return null;
     }
 }

@@ -19,6 +19,12 @@ public class VehicleTable {
     public static final String ID_ODOMETER_UNIT_COLUMN = "ID_ODOMETER_UNIT";
     public static final String ID_BODY_TYPE_COLUMN = "ID_BODY_TYPE";
 
+    public static final String[] COLUMNS = {
+            ID_COLUMN, MAKE_COLUMN, MODEL_COLUMN, YEAR_OF_MANUFACTURE_COLUMN, ID_FUEL_TYPE_COLUMN, WEIGHT_COLUMN,
+            LICENSE_NUMBER_COLUMN, POWER_COLUMN, ENGINE_CAPACITY_COLUMN, ODOMETER_COLUMN, ID_TRANSMISSION_COLUMN,
+            ID_ODOMETER_UNIT_COLUMN, ID_BODY_TYPE_COLUMN
+    };
+
     private VehicleTable() {}
 
     public static String getCreateQuery() {

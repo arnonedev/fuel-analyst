@@ -2,6 +2,7 @@ package pl.arnonedev.fuelanalyst.persistence;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import pl.arnonedev.fuelanalyst.persistence.table.*;
@@ -41,5 +42,10 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper {
 
     public void delete(SQLiteDatabase db, String tableName, String whereClause, String... whereArgs) {
         db.delete(tableName, whereClause, whereArgs);
+    }
+
+    public Cursor find(SQLiteDatabase db, String tableName, String[] columns, String whereClause, String[] whereArgs,
+                       String groupby, String having, String orderBy) {
+        return db.query(tableName, columns, whereClause, whereArgs, groupby, having, orderBy);
     }
 }
