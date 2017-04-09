@@ -28,7 +28,7 @@ public class VehicleTable {
     private VehicleTable() {}
 
     public static String getCreateQuery() {
-        return "CREATE TABLE " + TABLE_NAME + " (" + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINKREMENT, " +
+        return "CREATE TABLE " + TABLE_NAME + " (" + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MAKE_COLUMN + " TEXT, " +
                 MODEL_COLUMN + " TEXT, " +
                 YEAR_OF_MANUFACTURE_COLUMN + " INTEGER, " +

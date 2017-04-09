@@ -2,7 +2,6 @@ package pl.arnonedev.fuelanalyst.helper;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteException;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -88,7 +87,7 @@ public class VehicleHelper extends DatabaseModelHelper<Vehicle> {
     public List<Vehicle> findAll() {
         List<Vehicle> foundedVehicles = new ArrayList<>();
         try {
-            database = this.applicationDatabaseHelper.getWritableDatabase();
+            database = this.applicationDatabaseHelper.getReadableDatabase();
             Cursor cursor = applicationDatabaseHelper.find(database, VehicleTable.TABLE_NAME, VehicleTable.COLUMNS, null,
                     null, null, null, null);
             while (cursor.moveToNext()) {
@@ -115,67 +114,26 @@ public class VehicleHelper extends DatabaseModelHelper<Vehicle> {
         return result != 0;
     }
 
-    private FuelType getFuelById(int id) {
-        FuelType[] fuelTypes = FuelType.values();
-        for (FuelType fuelType : fuelTypes) {
-            if (fuelType.getDbId() == id) {
-                return fuelType;
-            }
-        }
-        return null;
-    }
-
-    private TransmissionType getTransmissionTypeById(int id) {
-        TransmissionType[] transmissionTypes = TransmissionType.values();
-        for (TransmissionType transmissionType : transmissionTypes) {
-            if (transmissionType.getDbId() == id) {
-                return transmissionType;
-            }
-        }
-        return null;
-    }
-
-    private OdometerUnit getOdometerUnitById(int id) {
-        OdometerUnit[] odometerUnits = OdometerUnit.values();
-        for (OdometerUnit odometerUnit : odometerUnits) {
-            if (odometerUnit.getDbId() == id) {
-                return odometerUnit;
-            }
-        }
-        return null;
-    }
-
-    private BodyType getBodyTypeById(int id) {
-        BodyType[] bodyTypes = BodyType.values();
-        for (BodyType bodyType : bodyTypes) {
-            if (bodyType.getDbId() == id) {
-                return bodyType;
-            }
-        }
-        return null;
-    }
-
     private Vehicle getVehicleFromCursor(Cursor cursor) {
         Vehicle result = new Vehicle();
         result.setId(cursor.getInt(0));
         result.setMake(cursor.getString(1));
         result.setModel(cursor.getString(2));
         result.setYearOfManufacture(cursor.getInt(3));
-        result.setFuelType(getFuelById(cursor.getInt(4)));
+        result.setFuelType(FuelTypeHelper.getFuelTypeById(cursor.getInt(4)));
         result.setWeight(cursor.getInt(5));
         result.setLicenseNumber(cursor.getString(6));
         result.setPower(cursor.getInt(7));
         result.setEngineCapacity(cursor.getInt(8));
         result.setOdometer(cursor.getInt(9));
-        result.setTransmissionType(getTransmissionTypeById(cursor.getInt(10)));
-        result.setOdometerUnit(getOdometerUnitById(cursor.getInt(11)));
-        result.setBodyType(getBodyTypeById(cursor.getInt(12)));
+        result.setTransmissionType(TransmissionTypeHelper.getTransmissionTypeById(cursor.getInt(10)));
+        result.setOdometerUnit(OdometerUnitHelper.getOdometerUnitById(cursor.getInt(11)));
+        result.setBodyType(BodyTypeHelper.getBodyTypeById(cursor.getInt(12)));
         return result;
     }
 
     private ContentValues getContentValuesFromVehicle(Vehicle vehicle) {
         ContentValues resutl = new ContentValues();
-        resutl.put(VehicleTable.ID_COLUMN, vehicle.getId());
         resutl.put(VehicleTable.MAKE_COLUMN, vehicle.getMake());
         resutl.put(VehicleTable.MODEL_COLUMN, vehicle.getModel());
         resutl.put(VehicleTable.YEAR_OF_MANUFACTURE_COLUMN, vehicle.getYearOfManufacture());

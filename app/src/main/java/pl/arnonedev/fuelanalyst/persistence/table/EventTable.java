@@ -15,7 +15,7 @@ public class EventTable {
     private EventTable() {}
 
     public static String getCreateQuery() {
-        return "CREATE TABLE " + TABLE_NAME + " (" + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINKREMENT, " +
+        return "CREATE TABLE " + TABLE_NAME + " (" + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 ID_VEHICLE_COLUMN + " INTEGER, " +
                 ID_EVENT_TYPE_COLUMN + " INTEGER, " +
                 DATE_COLUMN + " NUMBER, " +

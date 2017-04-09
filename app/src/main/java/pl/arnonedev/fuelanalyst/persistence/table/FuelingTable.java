@@ -24,7 +24,7 @@ public class FuelingTable {
     private FuelingTable() {}
 
     public static String getCreateQuery() {
-        return "CREATE TABLE " + TABLE_NAME + " (" + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINKREMENT, " +
+        return "CREATE TABLE " + TABLE_NAME + " (" + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 ID_VEHICLE_COLUMN + " INTEGER, " +
                 DATE_COLUMN + " NUMBER, " +
                 ODOMETER_COLUMN + " INTEGER, " +

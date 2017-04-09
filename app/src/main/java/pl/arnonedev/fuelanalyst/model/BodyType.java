@@ -4,29 +4,31 @@ package pl.arnonedev.fuelanalyst.model;
  * Created by Arek on 2017-03-26.
  */
 public enum BodyType {
-    SEDAN("Sedan", 20),
-    COUPE("Coupe", 18),
-    CABRIO("Cabriolet", 17),
-    COMBI("Combi", 19),
-    HATCHBACK("Hatchback", 24),
-    LIFTBACK("Liftback", 25),
-    PICKUP("Pick-up", 29),
-    SUV("SUV", 21),
-    MINIVAN("Minivan", 28),
-    LIMOUSINE("Limousine", 26),
-    ROADSTER("Roadster", 30),
-    VAN("Van", 32),
-    DUAL_COWL("Dual cowl", 22),
-    FASTBACK("Fastback", 23),
-    MICROVAN("Microvan", 27),
-    TARGA("Targa", 31);
+    SEDAN("Sedan", 20, 3),
+    COUPE("Coupe", 18, 1),
+    CABRIO("Cabriolet", 17, 0),
+    COMBI("Combi", 19, 2),
+    HATCHBACK("Hatchback", 24, 7),
+    LIFTBACK("Liftback", 25, 8),
+    PICKUP("Pick-up", 29, 12),
+    SUV("SUV", 21, 4),
+    MINIVAN("Minivan", 28, 11),
+    LIMOUSINE("Limousine", 26, 9),
+    ROADSTER("Roadster", 30, 13),
+    VAN("Van", 32, 15),
+    DUAL_COWL("Dual cowl", 22, 5),
+    FASTBACK("Fastback", 23, 6),
+    MICROVAN("Microvan", 27, 10),
+    TARGA("Targa", 31, 14);
 
     private String title;
     private int dbId;
+    private int arrayIndex;
 
-    BodyType(String title, int dbId) {
+    BodyType(String title, int dbId, int arrayIndex) {
         this.title = title;
         this.dbId = dbId;
+        this.arrayIndex = arrayIndex;
     }
 
     public String getTitle() {
@@ -35,5 +37,9 @@ public enum BodyType {
 
     public int getDbId() {
         return dbId;
+    }
+
+    public int getArrayIndex() {
+        return arrayIndex;
     }
 }

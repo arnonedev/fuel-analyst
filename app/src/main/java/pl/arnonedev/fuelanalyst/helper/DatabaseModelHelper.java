@@ -2,7 +2,6 @@ package pl.arnonedev.fuelanalyst.helper;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
-import pl.arnonedev.fuelanalyst.model.Vehicle;
 import pl.arnonedev.fuelanalyst.persistence.ApplicationDatabaseHelper;
 
 import java.util.List;
@@ -20,10 +19,10 @@ public abstract class DatabaseModelHelper<T> {
         this.applicationDatabaseHelper = new ApplicationDatabaseHelper(activity);
     }
 
-    abstract T save(T t);
-    abstract T refresh(T t);
-    abstract T modify(T t);
-    abstract T find(int id);
-    abstract List<T> findAll();
-    abstract boolean delete(T t);
+    public abstract T save(T t);
+    public abstract T refresh(T t);
+    public abstract T modify(T t);
+    public abstract T find(int id);
+    public abstract List<T> findAll();
+    public abstract boolean delete(T t);
 }

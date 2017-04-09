@@ -12,7 +12,7 @@ public class PartsTypeTable {
     private PartsTypeTable() {}
 
     public static String getCreateQuery() {
-        return "CREATE TABLE " + TABLE_NAME + " (" + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINKREMENT, " +
+        return "CREATE TABLE " + TABLE_NAME + " (" + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 TYPE_COLUMN + " TEXT, " +
                 PARTS_GROUP_COLUMN + " TEXT);";
     }
