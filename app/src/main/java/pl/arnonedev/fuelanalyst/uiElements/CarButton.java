@@ -2,13 +2,11 @@ package pl.arnonedev.fuelanalyst.uiElements;
 
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import pl.arnonedev.fuelanalyst.R;
 import pl.arnonedev.fuelanalyst.model.Vehicle;
 
@@ -17,7 +15,6 @@ import pl.arnonedev.fuelanalyst.model.Vehicle;
  */
 public class CarButton extends Fragment {
     private Vehicle vehicle;
-    private Context context;
 
     public CarButton() {
     }
@@ -47,14 +44,5 @@ public class CarButton extends Fragment {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public void selectCar(View view) {
-        Toast toast = Toast.makeText(context, "Wybrano samochód " + vehicle.getLicenseNumber(), Toast.LENGTH_LONG);
-        toast.show();
     }
 }
