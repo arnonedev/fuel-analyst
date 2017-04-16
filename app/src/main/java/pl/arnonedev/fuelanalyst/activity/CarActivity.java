@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 import pl.arnonedev.fuelanalyst.R;
 import pl.arnonedev.fuelanalyst.helper.DatabaseModelHelper;
 import pl.arnonedev.fuelanalyst.helper.VehicleHelper;
@@ -37,11 +36,6 @@ public class CarActivity extends AppCompatActivity {
             ft.add(R.id.vehicles_buttons, (Fragment)button);
             ft.commit();
         }
-    }
-
-    public void selectCar(View view) {
-        Toast toast = Toast.makeText(this, "Wybrano samochód", Toast.LENGTH_LONG);
-        toast.show();
     }
 
     public void addNewCar(View view) {

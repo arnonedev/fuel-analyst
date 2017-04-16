@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import pl.arnonedev.fuelanalyst.R;
 import pl.arnonedev.fuelanalyst.model.Vehicle;
 
@@ -39,6 +40,21 @@ public class CarButton extends Fragment {
                 model.setText(vehicle.getModel());
                 licensesNumber.setText(vehicle.getLicenseNumber());
             }
+        }
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        View view = getView();
+        if(view != null) {
+            view.findViewById(R.id.car_button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast toast = Toast.makeText(getActivity(), "Wybrano samochód " + vehicle.getLicenseNumber(), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            });
         }
     }
 
