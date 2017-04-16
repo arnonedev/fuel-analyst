@@ -2,13 +2,14 @@ package pl.arnonedev.fuelanalyst.uiElements;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import pl.arnonedev.fuelanalyst.R;
+import pl.arnonedev.fuelanalyst.activity.VehicleDetailsActivity;
 import pl.arnonedev.fuelanalyst.model.Vehicle;
 
 /**
@@ -51,8 +52,9 @@ public class CarButton extends Fragment {
             view.findViewById(R.id.car_button).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast toast = Toast.makeText(getActivity(), "Wybrano samochód " + vehicle.getLicenseNumber(), Toast.LENGTH_LONG);
-                    toast.show();
+                    Intent intent = new Intent(getActivity(), VehicleDetailsActivity.class);
+                    intent.putExtra(VehicleDetailsActivity.VEHICLE_ID, vehicle.getId());
+                    getActivity().startActivity(intent);
                 }
             });
         }
