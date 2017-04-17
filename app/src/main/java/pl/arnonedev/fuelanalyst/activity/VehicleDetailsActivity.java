@@ -31,15 +31,15 @@ public class VehicleDetailsActivity extends AppCompatActivity {
     private void setViews(Vehicle vehicle) {
         ((TextView) findViewById(R.id.vehicle_make_output)).setText(vehicle.getMake());
         ((TextView) findViewById(R.id.vehicle_model_output)).setText(vehicle.getModel());
-//        ((TextView) findViewById(R.id.year_of_manufacture_output)).setText(vehicle.getYearOfManufacture());
-//        ((TextView) findViewById(R.id.weight_output)).setText(vehicle.getWeight());
-//        ((TextView) findViewById(R.id.fuel_type_output)).setText(vehicle.getFuelType().getTitle());
-//        ((TextView) findViewById(R.id.licence_number_output)).setText(vehicle.getLicenseNumber());
-//        ((TextView) findViewById(R.id.power_output)).setText(vehicle.getPower() + " KM");
-//        ((TextView) findViewById(R.id.engine_capacity_output)).setText(vehicle.getEngineCapacity() + " cm3");
-//        ((TextView) findViewById(R.id.odometer_add_vehicle_output)).setText(vehicle.getOdometer() + " " + vehicle.getOdometerUnit().getTitle());
-//        ((TextView) findViewById(R.id.transmission_output)).setText(vehicle.getTransmissionType().getTitle());
-//        ((TextView) findViewById(R.id.odometer_unit_output)).setText(vehicle.getOdometerUnit().getTitle());
-//        ((TextView) findViewById(R.id.body_type_output)).setText(vehicle.getBodyType().getTitle());
+        ((TextView) findViewById(R.id.year_of_manufacture_output)).setText(Integer.toString(vehicle.getYearOfManufacture()));
+        ((TextView) findViewById(R.id.weight_output)).setText(vehicle.getWeight() + " kg");
+        ((TextView) findViewById(R.id.fuel_type_output)).setText(vehicle.getFuelType().getTitle());
+        ((TextView) findViewById(R.id.licence_number_output)).setText(vehicle.getLicenseNumber());
+        ((TextView) findViewById(R.id.power_output)).setText(vehicle.getPower() + " KM");
+        ((TextView) findViewById(R.id.engine_capacity_output)).setText(vehicle.getEngineCapacity() + " cm3");
+        ((TextView) findViewById(R.id.odometer_add_vehicle_output)).setText(vehicle.getOdometer() + " " + vehicle.getOdometerUnit().getTitle());
+        ((TextView) findViewById(R.id.transmission_output)).setText(vehicle.getTransmissionType().getTitle());
+        ((TextView) findViewById(R.id.odometer_unit_output)).setText(vehicle.getOdometerUnit().getTitle());
+        ((TextView) findViewById(R.id.body_type_output)).setText(vehicle.getBodyType().getTitle());
     }
 }
