@@ -1,9 +1,11 @@
 package pl.arnonedev.fuelanalyst.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Arek on 2017-03-26.
  */
-public class Vehicle {
+public class Vehicle implements Serializable {
     private long id;
     private String make;
     private String model;

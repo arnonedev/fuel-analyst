@@ -12,6 +12,7 @@ import pl.arnonedev.fuelanalyst.helper.*;
 import pl.arnonedev.fuelanalyst.model.Vehicle;
 
 public class AddVechicleActivity extends AppCompatActivity {
+    Vehicle vehicle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,24 @@ public class AddVechicleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_vechicle);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if ((vehicle = (Vehicle) getIntent().getSerializableExtra(VehicleDetailsActivity.VEHICLE)) != null) {
+            setViews();
+        }
+    }
+
+    private void setViews() {
+        ((EditText) findViewById(R.id.vehicle_make_input)).setText(vehicle.getMake());
+        ((EditText) findViewById(R.id.vehicle_model_input)).setText(vehicle.getModel());
+        ((EditText) findViewById(R.id.year_of_manufacture_input)).setText(Integer.toString(vehicle.getYearOfManufacture()));
+        ((EditText) findViewById(R.id.weight_input)).setText(Integer.toString(vehicle.getWeight()));
+        ((Spinner) findViewById(R.id.fuel_type_input)).setSelection(vehicle.getFuelType().getArrayIndex());
+        ((EditText) findViewById(R.id.licence_number_input)).setText(vehicle.getLicenseNumber());
+        ((EditText) findViewById(R.id.power_input)).setText(Integer.toString(vehicle.getPower()));
+        ((EditText) findViewById(R.id.engine_capacity_input)).setText(Integer.toString(vehicle.getEngineCapacity()));
+        ((EditText) findViewById(R.id.odometer_add_vehicle_input)).setText(Integer.toString(vehicle.getOdometer()));
+        ((Spinner) findViewById(R.id.transmission_input)).setSelection(vehicle.getTransmissionType().getArrayIndex());
+        ((Spinner) findViewById(R.id.odometer_unit_input)).setSelection(vehicle.getOdometerUnit().getArrayIndex());
+        ((Spinner) findViewById(R.id.body_type_input)).setSelection(vehicle.getBodyType().getArrayIndex());
     }
 
     public void accept(View view) {
@@ -36,8 +55,14 @@ public class AddVechicleActivity extends AppCompatActivity {
         vehicle.setOdometerUnit(OdometerUnitHelper.getOdometerUnitByIndex(((Spinner) findViewById(R.id.odometer_unit_input)).getSelectedItemPosition()));
         vehicle.setBodyType(BodyTypeHelper.getBodyTypeByIndex(((Spinner) findViewById(R.id.body_type_input)).getSelectedItemPosition()));
         DatabaseModelHelper<Vehicle> vehicleHelper = new VehicleHelper(this);
-        vehicleHelper.save(vehicle);
-        backToMainActivity();
+        if (this.vehicle != null) {
+            vehicle.setId(this.vehicle.getId());
+            vehicleHelper.modify(vehicle);
+            backToVehicleDetailsActivity();
+        } else {
+            vehicleHelper.save(vehicle);
+            backToMainActivity();
+        }
     }
 
     public void reject(View view) {
@@ -51,4 +76,11 @@ public class AddVechicleActivity extends AppCompatActivity {
         finish();
     }
 
+    private void backToVehicleDetailsActivity() {
+        Intent intent = new Intent(this, VehicleDetailsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(VehicleDetailsActivity.VEHICLE_ID, vehicle.getId());
+        startActivity(intent);
+        finish();
+    }
 }

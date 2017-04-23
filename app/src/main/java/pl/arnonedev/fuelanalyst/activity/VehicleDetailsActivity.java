@@ -1,5 +1,6 @@
 package pl.arnonedev.fuelanalyst.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,7 @@ import pl.arnonedev.fuelanalyst.model.Vehicle;
 
 public class VehicleDetailsActivity extends AppCompatActivity {
     public static final String VEHICLE_ID = "VEHICLE_ID";
+    public static final String VEHICLE = "VEHICLE";
     private Vehicle vehicle;
 
     @Override
@@ -46,6 +48,8 @@ public class VehicleDetailsActivity extends AppCompatActivity {
     }
 
     public void editVehicle(View view) {
-
+        Intent intent = new Intent(this, AddVechicleActivity.class);
+        intent.putExtra(VEHICLE, vehicle);
+        startActivity(intent);
     }
 }
