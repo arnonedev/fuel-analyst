@@ -2,6 +2,7 @@ package pl.arnonedev.fuelanalyst.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 import pl.arnonedev.fuelanalyst.R;
 import pl.arnonedev.fuelanalyst.helper.VehicleHelper;
@@ -9,6 +10,7 @@ import pl.arnonedev.fuelanalyst.model.Vehicle;
 
 public class VehicleDetailsActivity extends AppCompatActivity {
     public static final String VEHICLE_ID = "VEHICLE_ID";
+    private Vehicle vehicle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,7 @@ public class VehicleDetailsActivity extends AppCompatActivity {
     private void getVehicleAndShowDetails(long id) {
         if (id > 0) {
             VehicleHelper vehicleHelper = new VehicleHelper(this);
-            Vehicle vehicle = vehicleHelper.find((int) id);
+            vehicle = vehicleHelper.find((int) id);
             if(vehicle != null) {
                 setViews(vehicle);
             }
@@ -41,5 +43,9 @@ public class VehicleDetailsActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.transmission_output)).setText(vehicle.getTransmissionType().getTitle());
         ((TextView) findViewById(R.id.odometer_unit_output)).setText(vehicle.getOdometerUnit().getTitle());
         ((TextView) findViewById(R.id.body_type_output)).setText(vehicle.getBodyType().getTitle());
+    }
+
+    public void editVehicle(View view) {
+
     }
 }

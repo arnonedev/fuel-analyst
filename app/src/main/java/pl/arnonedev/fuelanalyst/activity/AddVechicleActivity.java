@@ -37,9 +37,14 @@ public class AddVechicleActivity extends AppCompatActivity {
         vehicle.setBodyType(BodyTypeHelper.getBodyTypeByIndex(((Spinner) findViewById(R.id.body_type_input)).getSelectedItemPosition()));
         DatabaseModelHelper<Vehicle> vehicleHelper = new VehicleHelper(this);
         vehicleHelper.save(vehicle);
+        backToMainActivity();
     }
 
     public void reject(View view) {
+        backToMainActivity();
+    }
+
+    private void backToMainActivity() {
         Intent intent = new Intent(this, CarActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
