@@ -12,19 +12,21 @@ import pl.arnonedev.fuelanalyst.model.Vehicle;
 public class VehicleDetailsActivity extends AppCompatActivity {
     public static final String VEHICLE_ID = "VEHICLE_ID";
     public static final String VEHICLE = "VEHICLE";
+
     private Vehicle vehicle;
+    private VehicleHelper vehicleHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle_details);
+        vehicleHelper = new VehicleHelper(this);
         long id = getIntent().getLongExtra(VEHICLE_ID, 0);
         getVehicleAndShowDetails(id);
     }
 
     private void getVehicleAndShowDetails(long id) {
         if (id > 0) {
-            VehicleHelper vehicleHelper = new VehicleHelper(this);
             vehicle = vehicleHelper.find((int) id);
             if(vehicle != null) {
                 setViews(vehicle);
@@ -51,5 +53,13 @@ public class VehicleDetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddVechicleActivity.class);
         intent.putExtra(VEHICLE, vehicle);
         startActivity(intent);
+    }
+
+    public void deleteVehicle(View view) {
+        vehicleHelper.delete(vehicle);
+        Intent intent = new Intent(this, CarActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }

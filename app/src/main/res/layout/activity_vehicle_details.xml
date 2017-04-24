@@ -10,13 +10,22 @@
         tools:context="pl.arnonedev.fuelanalyst.activity.VehicleDetailsActivity">
 
     <android.support.design.widget.FloatingActionButton
-            android:id="@+id/add_new_car_fab"
+            android:id="@+id/edit_car_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             android:onClick="editVehicle"
             app:srcCompat="@android:drawable/ic_menu_edit" app:backgroundTint="@android:color/holo_green_dark"/>
+
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/delete_car_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="@dimen/fab_margin"
+            android:onClick="deleteVehicle"
+            app:srcCompat="@drawable/reject" app:backgroundTint="@android:color/holo_red_dark"/>
 
 
     <ScrollView
