@@ -13,6 +13,11 @@ public class ReminderTable {
     public static final String ODOMETER_REPEATING_COLUMN = "ODOMETER_REPEATING";
     public static final String DESCRIPTION_COLUMN = "DESCRIPTION";
 
+    public static final String[] COLUMNS = {
+            ID_COLUMN, ID_VEHICLE_COLUMN, DATE_COLUMN, DATE_REPEATING_COLUMN, ODOMETER_COLUMN,
+            ODOMETER_REPEATING_COLUMN, DESCRIPTION_COLUMN
+    };
+
     private ReminderTable() {}
 
     public static String getCreateQuery() {
