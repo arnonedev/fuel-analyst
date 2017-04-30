@@ -21,6 +21,12 @@ public class FuelingTable {
     public static final String AVERAGE_COMBUSTION_COLUMN = "AVERAGE_COMBUSTION";
     public static final String FUEL_UNIT_COST_COLUMN = "FUEL_UNIT_COST";
 
+    public static final String[] COLUMNS = {
+            ID_COLUMN, ID_VEHICLE_COLUMN, DATE_COLUMN, ODOMETER_COLUMN, TRIP_COLUMN, QUANTITY_COLUMN, FULL_FUELING_COLUMN,
+            ID_FUEL_TYPE_COLUMN, COST_COLUMN, ID_TIRES_COLUMN, ID_DRIVING_STYLE_COLUMN, ID_ROUTES_COLUMN,
+            EXTRAS_COLUMN, AVERAGE_COMBUSTION_COLUMN, FUEL_UNIT_COST_COLUMN
+    };
+
     private FuelingTable() {}
 
     public static String getCreateQuery() {

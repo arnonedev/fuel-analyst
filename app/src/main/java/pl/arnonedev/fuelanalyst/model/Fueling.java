@@ -13,33 +13,35 @@ public class Fueling {
     private double quantity;
     private boolean fullFueling;
     private double cost;
-    private double average_consumption;
+    private double averageConsumption;
     private double fuelUnitCost;
     private String extras;
     private DrivingStyle drivingStyle;
     private RoutesType routesType;
     private Vehicle vehicle;
     private TireType tireType;
+    private FuelType fuelType;
 
     public Fueling() {}
 
-    public Fueling(Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double average_consumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Vehicle vehicle, TireType tireType) {
+    public Fueling(Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double averageConsumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Vehicle vehicle, TireType tireType, FuelType fuelType) {
         this.date = date;
         this.odometer = odometer;
         this.trip = trip;
         this.quantity = quantity;
         this.fullFueling = fullFueling;
         this.cost = cost;
-        this.average_consumption = average_consumption;
+        this.averageConsumption = averageConsumption;
         this.fuelUnitCost = fuelUnitCost;
         this.extras = extras;
         this.drivingStyle = drivingStyle;
         this.routesType = routesType;
         this.vehicle = vehicle;
         this.tireType = tireType;
+        this.fuelType = fuelType;
     }
 
-    public Fueling(long id, Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double average_consumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Vehicle vehicle, TireType tireType) {
+    public Fueling(long id, Date date, int odometer, double trip, double quantity, boolean fullFueling, double cost, double averageConsumption, double fuelUnitCost, String extras, DrivingStyle drivingStyle, RoutesType routesType, Vehicle vehicle, TireType tireType, FuelType fuelType) {
         this.id = id;
         this.date = date;
         this.odometer = odometer;
@@ -47,13 +49,14 @@ public class Fueling {
         this.quantity = quantity;
         this.fullFueling = fullFueling;
         this.cost = cost;
-        this.average_consumption = average_consumption;
+        this.averageConsumption = averageConsumption;
         this.fuelUnitCost = fuelUnitCost;
         this.extras = extras;
         this.drivingStyle = drivingStyle;
         this.routesType = routesType;
         this.vehicle = vehicle;
         this.tireType = tireType;
+        this.fuelType = fuelType;
     }
 
     @Override
@@ -127,12 +130,12 @@ public class Fueling {
         this.cost = cost;
     }
 
-    public double getAverage_consumption() {
-        return average_consumption;
+    public double getAverageConsumption() {
+        return averageConsumption;
     }
 
-    public void setAverage_consumption(double average_consumption) {
-        this.average_consumption = average_consumption;
+    public void setAverageConsumption(double averageConsumption) {
+        this.averageConsumption = averageConsumption;
     }
 
     public double getFuelUnitCost() {
@@ -183,6 +186,14 @@ public class Fueling {
         this.tireType = tireType;
     }
 
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
+    }
+
     @Override
     public String toString() {
         return "Fueling{" +
@@ -193,7 +204,7 @@ public class Fueling {
                 ", quantity=" + quantity +
                 ", fullFueling=" + fullFueling +
                 ", cost=" + cost +
-                ", average_consumption=" + average_consumption +
+                ", averageConsumption=" + averageConsumption +
                 ", fuelUnitCost=" + fuelUnitCost +
                 ", extras='" + extras + '\'' +
                 ", drivingStyle=" + drivingStyle +
