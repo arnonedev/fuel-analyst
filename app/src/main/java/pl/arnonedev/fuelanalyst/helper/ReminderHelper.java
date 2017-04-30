@@ -2,7 +2,6 @@ package pl.arnonedev.fuelanalyst.helper;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteException;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,7 +9,6 @@ import pl.arnonedev.fuelanalyst.model.Reminder;
 import pl.arnonedev.fuelanalyst.persistence.table.ReminderTable;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +16,8 @@ import java.util.List;
  * Created by Arek on 2017-04-30.
  */
 public class ReminderHelper extends DatabaseModelHelper<Reminder> {
-    private SimpleDateFormat dateFormat;
-
     public ReminderHelper(AppCompatActivity activity) {
         super(activity);
-        dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
     }
 
     @Override
@@ -51,7 +46,7 @@ public class ReminderHelper extends DatabaseModelHelper<Reminder> {
             }
             database.close();
             cursor.close();
-        } catch (SQLException | ParseException e) {
+        } catch (SQLiteException | ParseException e) {
             Log.e(ReminderHelper.class.getName(), "Refresh reminder error " + e);
         }
         return refreshedReminder == null ? reminder : refreshedReminder;
@@ -62,9 +57,9 @@ public class ReminderHelper extends DatabaseModelHelper<Reminder> {
         try {
             database = this.applicationDatabaseHelper.getWritableDatabase();
             ContentValues values = getContentValuesFromReminder(reminder);
-            applicationDatabaseHelper.modify(database, values, ReminderTable.TABLE_NAME, "+id = ?", Long.toString(reminder.getId()));
+            applicationDatabaseHelper.modify(database, values, ReminderTable.TABLE_NAME, "_id = ?", Long.toString(reminder.getId()));
             database.close();
-        } catch (SQLException e) {
+        } catch (SQLiteException e) {
             Log.e(ReminderHelper.class.getName(), "Modify reminder error " + e);
         }
         return reminder;
@@ -82,7 +77,7 @@ public class ReminderHelper extends DatabaseModelHelper<Reminder> {
             }
             database.close();
             cursor.close();
-        } catch (SQLException | ParseException e) {
+        } catch (SQLiteException | ParseException e) {
             Log.e(ReminderHelper.class.getName(), "Find reminder error " + e);
         }
         return foundedReminder;
@@ -100,7 +95,7 @@ public class ReminderHelper extends DatabaseModelHelper<Reminder> {
             }
             database.close();
             cursor.close();
-        } catch (SQLException | ParseException e) {
+        } catch (SQLiteException | ParseException e) {
             Log.e(ReminderHelper.class.getName(), "Find reminders error " + e);
         }
         return foundedReminders;
@@ -113,7 +108,7 @@ public class ReminderHelper extends DatabaseModelHelper<Reminder> {
             database = this.applicationDatabaseHelper.getWritableDatabase();
             result = applicationDatabaseHelper.delete(database, ReminderTable.TABLE_NAME, "_id = ?", Long.toString(reminder.getId()));
             database.close();
-        } catch (SQLException e) {
+        } catch (SQLiteException e) {
             Log.e(ReminderHelper.class.getName(), "Delete reminder error " + e);
         }
         return result != 0;

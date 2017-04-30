@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import pl.arnonedev.fuelanalyst.persistence.ApplicationDatabaseHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -13,10 +14,12 @@ public abstract class DatabaseModelHelper<T> {
     protected AppCompatActivity activity = null;
     protected ApplicationDatabaseHelper applicationDatabaseHelper = null;
     protected SQLiteDatabase database = null;
+    protected SimpleDateFormat dateFormat;
 
     public DatabaseModelHelper(AppCompatActivity activity) {
         this.activity = activity;
         this.applicationDatabaseHelper = new ApplicationDatabaseHelper(activity);
+        this.dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
     }
 
     public abstract T save(T t);

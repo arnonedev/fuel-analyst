@@ -12,6 +12,10 @@ public class EventTable {
     public static final String REMINDER_COLUMN = "REMINDER";
     public static final String DESCRIPTION_COLUMN = "DESCRIPTION";
 
+    public static final String COLUMNS[] = {
+            ID_COLUMN, ID_VEHICLE_COLUMN, ID_EVENT_TYPE_COLUMN, DATE_COLUMN, REMINDER_COLUMN, DESCRIPTION_COLUMN
+    };
+
     private EventTable() {}
 
     public static String getCreateQuery() {
