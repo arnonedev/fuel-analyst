@@ -9,6 +9,10 @@ public class PartsTypeTable {
     public static final String TYPE_COLUMN = "TYPE";
     public static final String PARTS_GROUP_COLUMN = "PARTS_GROUP";
 
+    public static final String[] COLUMNS = {
+            ID_COLUMN, TYPE_COLUMN, PARTS_GROUP_COLUMN
+    };
+
     private PartsTypeTable() {}
 
     public static String getCreateQuery() {

@@ -3,7 +3,7 @@ package pl.arnonedev.fuelanalyst.model;
 /**
  * Created by Arek on 2017-03-26.
  */
-public enum DrivingStyle {
+public enum DrivingStyle implements PartsType {
     ECO("Eco", 9, 0),
     NORMAL("Normal", 8, 1),
     DYNAMIC("Dynamic", 7, 2);
@@ -18,15 +18,23 @@ public enum DrivingStyle {
         this.arrayIndex = arrayIndex;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public int getDbId() {
         return dbId;
     }
 
+    @Override
     public int getArrayIndex() {
         return arrayIndex;
+    }
+
+    @Override
+    public String getTypeGroup() {
+        return "DRIVING_STYLE";
     }
 }

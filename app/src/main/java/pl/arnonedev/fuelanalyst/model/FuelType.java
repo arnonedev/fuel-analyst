@@ -3,7 +3,7 @@ package pl.arnonedev.fuelanalyst.model;
 /**
  * Created by Arek on 2017-03-26.
  */
-public enum FuelType {
+public enum FuelType implements PartsType {
     DIESEL("Diesel", 38, 0),
     GAS("Gas", 43, 5),
     PETROL("Petrol", 39, 1),
@@ -21,15 +21,23 @@ public enum FuelType {
         this.arrayIndex = arrayIndex;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public int getDbId() {
         return dbId;
     }
 
+    @Override
     public int getArrayIndex() {
         return arrayIndex;
+    }
+
+    @Override
+    public String getTypeGroup() {
+        return "FUEL";
     }
 }

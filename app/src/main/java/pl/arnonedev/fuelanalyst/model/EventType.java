@@ -3,7 +3,7 @@ package pl.arnonedev.fuelanalyst.model;
 /**
  * Created by Arek on 2017-03-26.
  */
-public enum EventType {
+public enum EventType implements PartsType {
     INSPECTION("Inspection", 35, 0),
     INSURANCE("Insurance", 36, 0),
     CHANGE_TIRES("Change tires", 37, 0),
@@ -20,15 +20,23 @@ public enum EventType {
         this.arrayIndex = arrayIndex;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public int getDbId() {
         return dbId;
     }
 
+    @Override
     public int getArrayIndex() {
         return arrayIndex;
+    }
+
+    @Override
+    public String getTypeGroup() {
+        return "EVENT";
     }
 }

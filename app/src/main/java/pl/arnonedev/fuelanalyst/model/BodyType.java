@@ -3,7 +3,7 @@ package pl.arnonedev.fuelanalyst.model;
 /**
  * Created by Arek on 2017-03-26.
  */
-public enum BodyType {
+public enum BodyType implements PartsType {
     SEDAN("Sedan", 20, 3),
     COUPE("Coupe", 18, 1),
     CABRIO("Cabriolet", 17, 0),
@@ -31,15 +31,23 @@ public enum BodyType {
         this.arrayIndex = arrayIndex;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public int getDbId() {
         return dbId;
     }
 
+    @Override
     public int getArrayIndex() {
         return arrayIndex;
+    }
+
+    @Override
+    public String getTypeGroup() {
+        return "BODY";
     }
 }
