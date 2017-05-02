@@ -39,7 +39,7 @@ public class CarActivity extends AppCompatActivity {
     }
 
     public void addNewCar(View view) {
-        Intent intent = new Intent(this, AddVechicleActivity.class);
+        Intent intent = new Intent(this, AddFuelingActivity.class);
         startActivity(intent);
     }
 
