@@ -3,8 +3,11 @@ package pl.arnonedev.fuelanalyst.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import pl.arnonedev.fuelanalyst.R;
 import pl.arnonedev.fuelanalyst.helper.VehicleHelper;
 import pl.arnonedev.fuelanalyst.model.Vehicle;
@@ -23,6 +26,26 @@ public class VehicleDetailsActivity extends AppCompatActivity {
         vehicleHelper = new VehicleHelper(this);
         long id = getIntent().getLongExtra(VEHICLE_ID, 0);
         getVehicleAndShowDetails(id);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_cars, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_fueling_menu:
+                Intent intent = new Intent(this, AddFuelingActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_settings:
+                Toast.makeText(this, "Settings was clicked", Toast.LENGTH_LONG).show();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void getVehicleAndShowDetails(long id) {
