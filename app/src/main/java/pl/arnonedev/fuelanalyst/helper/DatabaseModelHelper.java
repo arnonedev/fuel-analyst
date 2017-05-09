@@ -19,7 +19,7 @@ public abstract class DatabaseModelHelper<T> {
     public DatabaseModelHelper(AppCompatActivity activity) {
         this.activity = activity;
         this.applicationDatabaseHelper = new ApplicationDatabaseHelper(activity);
-        this.dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+        this.dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
 
     public abstract T save(T t);

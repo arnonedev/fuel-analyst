@@ -51,5 +51,6 @@
     </string-array>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_add_fueling">AddFuelingActivity</string>
+    <string name="title_activity_fueling">FuelingActivity</string>
 
 </resources>

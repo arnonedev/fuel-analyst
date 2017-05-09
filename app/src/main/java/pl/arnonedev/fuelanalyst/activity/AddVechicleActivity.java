@@ -66,7 +66,11 @@ public class AddVechicleActivity extends AppCompatActivity {
     }
 
     public void reject(View view) {
-        backToMainActivity();
+        if(this.vehicle == null) {
+            backToMainActivity();
+        } else {
+            backToVehicleDetailsActivity();
+        }
     }
 
     private void backToMainActivity() {

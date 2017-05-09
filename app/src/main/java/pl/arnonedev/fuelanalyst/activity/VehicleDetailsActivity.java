@@ -38,7 +38,8 @@ public class VehicleDetailsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_fueling_menu:
-                Intent intent = new Intent(this, AddFuelingActivity.class);
+                Intent intent = new Intent(this, FuelingActivity.class);
+                intent.putExtra(VEHICLE, vehicle);
                 startActivity(intent);
                 return true;
             case R.id.action_settings:
