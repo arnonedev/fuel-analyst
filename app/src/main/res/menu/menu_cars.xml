@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pl.arnonedev.fuelanalyst.activity.CarActivity" >
     <item android:id="@+id/add_fueling_menu"
-          android:title="Fueling"
+          android:title="@string/fueling"
           android:orderInCategory="1"
           app:showAsAction="never" />
 

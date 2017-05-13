@@ -25,7 +25,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date"
+                    android:text="@string/date"
                     android:layout_row="0"
                     android:layout_column="0"/>
             <TextView
@@ -43,7 +43,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Odometer"
+                    android:text="@string/odometer"
                     android:layout_row="1"
                     android:layout_column="0"/>
             <EditText
@@ -60,7 +60,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Trip"
+                    android:text="@string/trip"
                     android:layout_row="2"
                     android:layout_column="0"/>
             <EditText
@@ -77,7 +77,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quantity"
+                    android:text="@string/quantity"
                     android:layout_row="3"
                     android:layout_column="0"/>
             <EditText
@@ -94,7 +94,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Full fueling"
+                    android:text="@string/full_fueling"
                     android:layout_row="4"
                     android:layout_column="0"/>
             <CheckBox
@@ -110,7 +110,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cost"
+                    android:text="@string/cost"
                     android:layout_row="5"
                     android:layout_column="0"/>
             <EditText
@@ -127,7 +127,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Average consumption"
+                    android:text="@string/average_consumption"
                     android:layout_row="6"
                     android:layout_column="0"/>
             <TextView
@@ -144,7 +144,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fuel unit cost"
+                    android:text="@string/fuel_unit_cost"
                     android:layout_row="7"
                     android:layout_column="0"/>
             <TextView
@@ -161,7 +161,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Extras"
+                    android:text="@string/extras"
                     android:layout_row="8"
                     android:layout_column="0"/>
             <LinearLayout
@@ -187,7 +187,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Driving style"
+                    android:text="@string/driving_style"
                     android:layout_row="10"
             android:layout_column="0"/>
             <LinearLayout
@@ -220,7 +220,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Routes"
+                    android:text="@string/routes"
                     android:layout_row="12"
                     android:layout_column="0"/>
             <LinearLayout
@@ -253,7 +253,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tires"
+                    android:text="@string/tires"
                     android:layout_row="14"
                     android:layout_column="0"/>
             <LinearLayout
@@ -284,7 +284,7 @@
             </LinearLayout>
 
             <TextView
-                    android:text="Fuel"
+                    android:text="@string/fuel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

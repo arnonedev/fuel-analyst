@@ -53,4 +53,34 @@
     <string name="title_activity_add_fueling">AddFuelingActivity</string>
     <string name="title_activity_fueling">FuelingActivity</string>
 
+    <!-- Vehicle elements -->
+    <string name="make">Make</string>
+    <string name="model">Model</string>
+    <string name="year_of_manufacture">Year of manufacture</string>
+    <string name="weight">Weight</string>
+    <string name="fuel">Fuel</string>
+    <string name="licence_number">Licence number</string>
+    <string name="power">Power</string>
+    <string name="engine_capacity">Engine capacity</string>
+    <string name="odometer">Odometer</string>
+    <string name="transmission">Transmission</string>
+    <string name="odometer_unit">Odometer unit</string>
+    <string name="body">Body</string>
+
+    <!-- Fueling elements -->
+    <string name="date">Date</string>
+    <string name="trip">Trip</string>
+    <string name="quantity">Quantity</string>
+    <string name="full_fueling">Full fueling</string>
+    <string name="cost">Cost</string>
+    <string name="average_consumption">Average consumption</string>
+    <string name="fuel_unit_cost">Fuel unit cost</string>
+    <string name="extras">Extras</string>
+    <string name="driving_style">Driving style</string>
+    <string name="routes">Routes</string>
+    <string name="tires">Tires</string>
+
+    <!-- Menu elements -->
+    <string name="fueling">Fueling</string>
+
 </resources>
