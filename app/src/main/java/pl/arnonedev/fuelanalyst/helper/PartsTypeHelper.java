@@ -50,6 +50,11 @@ public class PartsTypeHelper extends DatabaseModelHelper<PartsType> {
     }
 
     @Override
+    public List<PartsType> findAllByVehicleId(int id) {
+        return null;
+    }
+
+    @Override
     public boolean delete(PartsType partsType) {
         return false;
     }

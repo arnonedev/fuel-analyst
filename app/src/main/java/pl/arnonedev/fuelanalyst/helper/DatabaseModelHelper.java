@@ -27,5 +27,6 @@ public abstract class DatabaseModelHelper<T> {
     public abstract T modify(T t);
     public abstract T find(int id);
     public abstract List<T> findAll();
+    public abstract List<T> findAllByVehicleId(int id);
     public abstract boolean delete(T t);
 }

@@ -102,6 +102,25 @@ public class ReminderHelper extends DatabaseModelHelper<Reminder> {
     }
 
     @Override
+    public List<Reminder> findAllByVehicleId(int id) {
+        List<Reminder> foundedReminders = new ArrayList<>();
+        String whereClause = ReminderTable.ID_VEHICLE_COLUMN + " = ?";
+        try {
+            database = this.applicationDatabaseHelper.getReadableDatabase();
+            Cursor cursor = applicationDatabaseHelper.find(database, ReminderTable.TABLE_NAME, ReminderTable.COLUMNS, whereClause,
+                    new String[]{Integer.toString(id)}, null, null, null);
+            while (cursor.moveToNext()) {
+                foundedReminders.add(getReminderFromCursor(cursor));
+            }
+            database.close();
+            cursor.close();
+        } catch (SQLiteException | ParseException e) {
+            Log.e(ReminderHelper.class.getName(), "Find reminders error " + e);
+        }
+        return foundedReminders;
+    }
+
+    @Override
     public boolean delete(Reminder reminder) {
         int result = 0;
         try {

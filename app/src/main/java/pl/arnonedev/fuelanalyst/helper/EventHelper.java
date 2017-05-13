@@ -102,6 +102,25 @@ public class EventHelper extends DatabaseModelHelper<Event> {
     }
 
     @Override
+    public List<Event> findAllByVehicleId(int id) {
+        List<Event> foundedEvents = new ArrayList<>();
+        String whereClause = EventTable.ID_VEHICLE_COLUMN + " = ?";
+        try {
+            database = this.applicationDatabaseHelper.getReadableDatabase();
+            Cursor cursor = applicationDatabaseHelper.find(database, EventTable.TABLE_NAME, EventTable.COLUMNS, whereClause,
+                    new String[]{Integer.toString(id)}, null, null, null);
+            while (cursor.moveToNext()) {
+                foundedEvents.add(getEventFromCursor(cursor));
+            }
+            database.close();
+            cursor.close();
+        } catch (SQLiteException | ParseException e) {
+            Log.e(EventHelper.class.getName(), "Find events by vehicle id error " + e);
+        }
+        return foundedEvents;
+    }
+
+    @Override
     public boolean delete(Event event) {
         int result = 0;
         try {

@@ -102,6 +102,25 @@ public class FuelingHelper extends  DatabaseModelHelper<Fueling> {
     }
 
     @Override
+    public List<Fueling> findAllByVehicleId(int id) {
+        List<Fueling> foundedFuelings = new ArrayList<>();
+        String whereClause = FuelingTable.ID_VEHICLE_COLUMN + " = ?";
+        try {
+            database = this.applicationDatabaseHelper.getReadableDatabase();
+            Cursor cursor = applicationDatabaseHelper.find((database), FuelingTable.TABLE_NAME, FuelingTable.COLUMNS, whereClause,
+                    new String[]{Integer.toString(id)}, null, null, null);
+            while (cursor.moveToNext()) {
+                foundedFuelings.add(getFuelingFromCursor(cursor));
+            }
+            database.close();
+            cursor.close();
+        } catch (SQLiteException | ParseException e) {
+            Log.e(FuelingHelper.class.getName(), "Find fueling error " + e);
+        }
+        return foundedFuelings;
+    }
+
+    @Override
     public boolean delete(Fueling fueling) {
         int result = 0;
         try {

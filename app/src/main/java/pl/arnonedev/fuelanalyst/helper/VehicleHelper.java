@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import pl.arnonedev.fuelanalyst.model.*;
+import pl.arnonedev.fuelanalyst.model.Vehicle;
 import pl.arnonedev.fuelanalyst.persistence.table.VehicleTable;
 
 import java.util.ArrayList;
@@ -99,6 +99,11 @@ public class VehicleHelper extends DatabaseModelHelper<Vehicle> {
             Log.e(VehicleHelper.class.getName(), "Find vehicles error " + e);
         }
         return foundedVehicles;
+    }
+
+    @Override
+    public List<Vehicle> findAllByVehicleId(int id) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
