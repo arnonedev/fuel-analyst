@@ -69,7 +69,14 @@ public class AddFuelingActivity extends AppCompatActivity {
     }
 
     private void setTiresType() {
-
+        TireType tireType = fueling.getTireType();
+        if (tireType.equals(TireType.MULTI_SEASON)) {
+            ((ToggleButton) findViewById(R.id.add_fueling_multi_season)).setChecked(true);
+        } else if (tireType.equals(TireType.SUMMER)) {
+            ((ToggleButton) findViewById(R.id.add_fueling_summer_tire)).setChecked(true);
+        } else  {
+            ((ToggleButton) findViewById(R.id.add_fueling_winter_tire)).setChecked(true);
+        }
     }
 
     private void setExtras() {
@@ -78,11 +85,25 @@ public class AddFuelingActivity extends AppCompatActivity {
     }
 
     private void setRoutesType() {
-
+        RoutesType routesType = fueling.getRoutesType();
+        if (routesType.equals(RoutesType.CITY)) {
+            ((ToggleButton) findViewById(R.id.add_fueling_city)).setChecked(true);
+        } else if (routesType.equals(RoutesType.HIGHWAY)) {
+            ((ToggleButton) findViewById(R.id.add_fueling_highway)).setChecked(true);
+        } else {
+            ((ToggleButton)findViewById(R.id.add_fueling_mixed)).setChecked(true);
+        }
     }
 
     private void setDrivingStyle() {
-
+        DrivingStyle drivingStyle = fueling.getDrivingStyle();
+        if (drivingStyle.equals(DrivingStyle.DYNAMIC)) {
+            ((ToggleButton) findViewById(R.id.add_fueling_dynamic_driving)).setChecked(true);
+        } else if (drivingStyle.equals(DrivingStyle.ECO)) {
+            ((ToggleButton) findViewById(R.id.add_fueling_eco_driving)).setChecked(true);
+        } else {
+            ((ToggleButton) findViewById(R.id.add_fueling_normal_driving)).setChecked(true);
+        }
     }
 
     public void setDate(View view) {
@@ -124,15 +145,56 @@ public class AddFuelingActivity extends AppCompatActivity {
         fueling.setCost(cost);
         fueling.setAverageConsumption((quantity/trip)*100);
         fueling.setFuelUnitCost(cost / quantity);
-        fueling.setExtras("");
-        fueling.setDrivingStyle(DrivingStyle.NORMAL);
-        fueling.setRoutesType(RoutesType.MIXED);
-        fueling.setTireType(TireType.MULTI_SEASON);
+        fueling.setExtras(getExtras());
+        fueling.setDrivingStyle(getDrivingStyle());
+        fueling.setRoutesType(getRoutesType());
+        fueling.setTireType(getTiresType());
         fueling.setFuelType(FuelTypeHelper.getFuelTypeByIndex(((Spinner) findViewById(R.id.add_fueling_fuel_type_input)).getSelectedItemPosition()));
         fueling.setVehicle(vehicle);
         DatabaseModelHelper<Fueling> fuelingHelper = new FuelingHelper(this);
         fuelingHelper.save(fueling);
         backToFuelingActivity();
+    }
+
+    private TireType getTiresType() {
+        if (((ToggleButton) findViewById(R.id.add_fueling_summer_tire)).isChecked()) {
+            return TireType.SUMMER;
+        } else if (((ToggleButton) findViewById(R.id.add_fueling_winter_tire)).isChecked()) {
+            return TireType.WINTER;
+        } else {
+            return TireType.MULTI_SEASON;
+        }
+    }
+
+    private RoutesType getRoutesType() {
+        if (((ToggleButton) findViewById(R.id.add_fueling_city)).isChecked()) {
+            return RoutesType.CITY;
+        } else if (((ToggleButton) findViewById(R.id.add_fueling_highway)).isChecked()) {
+            return RoutesType.HIGHWAY;
+        } else {
+            return RoutesType.MIXED;
+        }
+    }
+
+    private DrivingStyle getDrivingStyle() {
+        if (((ToggleButton) findViewById(R.id.add_fueling_eco_driving)).isChecked()) {
+            return DrivingStyle.ECO;
+        } else if (((ToggleButton) findViewById(R.id.add_fueling_dynamic_driving)).isChecked()) {
+            return DrivingStyle.DYNAMIC;
+        } else {
+            return DrivingStyle.NORMAL;
+        }
+    }
+
+    private String getExtras() {
+        String result = "";
+        if(((ToggleButton)findViewById(R.id.add_fueling_extras_clima)).isChecked()) {
+            result += CLIMA + "|";
+        }
+        if (((ToggleButton) findViewById(R.id.add_fueling_extras_trailer)).isChecked()) {
+            result += TRAILER;
+        }
+        return result;
     }
 
     private void backToFuelingActivity() {
