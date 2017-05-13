@@ -42,7 +42,7 @@ public class FuelingActivity extends AppCompatActivity {
 
     private List<Fueling> getFuelings() {
         DatabaseModelHelper<Fueling> fuelingHelper = new FuelingHelper(this);
-        return fuelingHelper.findAll();
+        return fuelingHelper.findAllByVehicleId((int) vehicle.getId());
     }
 
     public void addFueling(View view) {
