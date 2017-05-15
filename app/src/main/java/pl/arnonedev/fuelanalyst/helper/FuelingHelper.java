@@ -149,7 +149,6 @@ public class FuelingHelper extends  DatabaseModelHelper<Fueling> {
         result.put(FuelingTable.EXTRAS_COLUMN, fueling.getExtras());
         result.put(FuelingTable.AVERAGE_COMBUSTION_COLUMN, fueling.getAverageConsumption());
         result.put(FuelingTable.FUEL_UNIT_COST_COLUMN, fueling.getFuelUnitCost());
-        Log.e(FuelingHelper.class.getName(), result.toString());
         return result;
     }
 

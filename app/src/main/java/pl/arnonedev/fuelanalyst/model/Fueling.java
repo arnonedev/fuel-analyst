@@ -1,11 +1,12 @@
 package pl.arnonedev.fuelanalyst.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Arek on 2017-03-26.
  */
-public class Fueling {
+public class Fueling implements Serializable {
     private long id;
     private Date date;
     private int odometer;

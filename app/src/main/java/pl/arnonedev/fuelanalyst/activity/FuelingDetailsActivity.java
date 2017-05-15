@@ -1,19 +1,17 @@
 package pl.arnonedev.fuelanalyst.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import pl.arnonedev.fuelanalyst.R;
 import pl.arnonedev.fuelanalyst.helper.DatabaseModelHelper;
 import pl.arnonedev.fuelanalyst.helper.FuelingHelper;
-import pl.arnonedev.fuelanalyst.model.DrivingStyle;
-import pl.arnonedev.fuelanalyst.model.Fueling;
-import pl.arnonedev.fuelanalyst.model.RoutesType;
-import pl.arnonedev.fuelanalyst.model.TireType;
+import pl.arnonedev.fuelanalyst.model.*;
 
 import java.text.SimpleDateFormat;
 
@@ -21,6 +19,7 @@ public class FuelingDetailsActivity extends AppCompatActivity {
     public static final String FUELING_ID = "FUELING_ID";
     private Fueling fueling;
     private SimpleDateFormat dateFormat;
+    private DatabaseModelHelper<Fueling> fuelingHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +28,10 @@ public class FuelingDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         this.dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        DatabaseModelHelper<Fueling> fuelingHelper = new FuelingHelper(this);
+        fuelingHelper = new FuelingHelper(this);
         fueling = fuelingHelper.find((int)getIntent().getLongExtra(FUELING_ID, 0));
         if (fueling != null) {
-//            setViews();
-            Log.e(FuelingDetailsActivity.class.getName(), fueling.toString());
+            setViews();
         }
     }
 
@@ -89,5 +87,21 @@ public class FuelingDetailsActivity extends AppCompatActivity {
         } else {
             ((ToggleButton) findViewById(R.id.add_fueling_normal_driving_output)).setChecked(true);
         }
+    }
+
+    public void editFueling(View view) {
+        Intent intent = new Intent(this, AddFuelingActivity.class);
+        intent.putExtra(FuelingActivity.FUELING, fueling);
+        startActivity(intent);
+    }
+
+    public void deleteFueling(View view) {
+        Vehicle vehicle = fueling.getVehicle();
+        fuelingHelper.delete(fueling);
+        Intent intent = new Intent(this, FuelingActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(VehicleDetailsActivity.VEHICLE, vehicle);
+        startActivity(intent);
+        finish();
     }
 }

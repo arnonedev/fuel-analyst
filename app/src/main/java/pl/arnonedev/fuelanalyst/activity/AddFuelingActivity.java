@@ -41,6 +41,9 @@ public class AddFuelingActivity extends AppCompatActivity {
         this.dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         vehicle = (Vehicle) getIntent().getSerializableExtra(VehicleDetailsActivity.VEHICLE);
         if ((fueling = (Fueling) getIntent().getSerializableExtra(FuelingActivity.FUELING)) != null) {
+            if (vehicle == null) {
+                vehicle = fueling.getVehicle();
+            }
             setViews();
         } else {
             dateView = (TextView) findViewById(R.id.add_fueling_date);
@@ -153,8 +156,14 @@ public class AddFuelingActivity extends AppCompatActivity {
         fueling.setFuelType(FuelTypeHelper.getFuelTypeByIndex(((Spinner) findViewById(R.id.add_fueling_fuel_type_input)).getSelectedItemPosition()));
         fueling.setVehicle(vehicle);
         DatabaseModelHelper<Fueling> fuelingHelper = new FuelingHelper(this);
-        fuelingHelper.save(fueling);
-        backToFuelingActivity();
+        if (this.fueling == null) {
+            fuelingHelper.save(fueling);
+            backToFuelingActivity();
+        } else {
+            fueling.setId(this.fueling.getId());
+            fuelingHelper.modify(fueling);
+            backToFuelingDetailsActivity();
+        }
     }
 
     private TireType getTiresType() {
@@ -206,7 +215,19 @@ public class AddFuelingActivity extends AppCompatActivity {
         finish();
     }
 
-    public void rejectFueling(View view) {
+    private void backToFuelingDetailsActivity() {
+        Intent intent = new Intent(this, FuelingDetailsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(FuelingDetailsActivity.FUELING_ID, fueling.getId());
+        startActivity(intent);
+        finish();
+    }
 
+    public void rejectFueling(View view) {
+        if (this.fueling == null) {
+            backToFuelingActivity();
+        } else {
+            backToFuelingDetailsActivity();
+        }
     }
 }
