@@ -82,5 +82,6 @@
 
     <!-- Menu elements -->
     <string name="fueling">Fueling</string>
+    <string name="title_activity_fueling_details">FuelingDetailsActivity</string>
 
 </resources>

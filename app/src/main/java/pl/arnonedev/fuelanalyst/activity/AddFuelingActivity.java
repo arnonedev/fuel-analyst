@@ -19,8 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AddFuelingActivity extends AppCompatActivity {
-    private static final String CLIMA = "CLIMA";
-    private static final String TRAILER = "TRAILER";
+    public static final String CLIMA = "CLIMA";
+    public static final String TRAILER = "TRAILER";
+
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
@@ -200,6 +201,7 @@ public class AddFuelingActivity extends AppCompatActivity {
     private void backToFuelingActivity() {
         Intent intent = new Intent(this, FuelingActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(VehicleDetailsActivity.VEHICLE, vehicle);
         startActivity(intent);
         finish();
     }

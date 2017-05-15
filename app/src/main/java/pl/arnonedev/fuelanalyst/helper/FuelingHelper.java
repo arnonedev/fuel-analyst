@@ -149,6 +149,7 @@ public class FuelingHelper extends  DatabaseModelHelper<Fueling> {
         result.put(FuelingTable.EXTRAS_COLUMN, fueling.getExtras());
         result.put(FuelingTable.AVERAGE_COMBUSTION_COLUMN, fueling.getAverageConsumption());
         result.put(FuelingTable.FUEL_UNIT_COST_COLUMN, fueling.getFuelUnitCost());
+        Log.e(FuelingHelper.class.getName(), result.toString());
         return result;
     }
 
@@ -162,13 +163,14 @@ public class FuelingHelper extends  DatabaseModelHelper<Fueling> {
         result.setTrip(cursor.getDouble(4));
         result.setQuantity(cursor.getDouble(5));
         result.setFullFueling(cursor.getInt(6) > 0);
-        result.setCost(cursor.getDouble(7));
-        result.setTireType(TireTypeHelper.getTireTypeById(cursor.getInt(8)));
-        result.setDrivingStyle(DrivingStyleHelper.getDrivingStyleById(cursor.getInt(9)));
-        result.setRoutesType(RoutesTypeHelper.getRoutesTypeById(cursor.getInt(10)));
-        result.setExtras(cursor.getString(11));
-        result.setAverageConsumption(cursor.getDouble(12));
-        result.setFuelUnitCost(cursor.getDouble(13));
+        result.setFuelType(FuelTypeHelper.getFuelTypeById(cursor.getInt(7)));
+        result.setCost(cursor.getDouble(8));
+        result.setTireType(TireTypeHelper.getTireTypeById(cursor.getInt(9)));
+        result.setDrivingStyle(DrivingStyleHelper.getDrivingStyleById(cursor.getInt(10)));
+        result.setRoutesType(RoutesTypeHelper.getRoutesTypeById(cursor.getInt(11)));
+        result.setExtras(cursor.getString(12));
+        result.setAverageConsumption(cursor.getDouble(13));
+        result.setFuelUnitCost(cursor.getDouble(14));
         return result;
     }
 }
