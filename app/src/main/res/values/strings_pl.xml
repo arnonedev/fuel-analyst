@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fuel Analyst</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="title_activity_car">Wybierz pojazd</string>
+    <string name="title_activity_add_vechicle">Dodaj pojazd</string>
+
+    <!-- fuel types -->
+    <string name="choose_a_fuel_type">Wybierz typ paliwa</string>
+    <string-array name="fuel_types">
+        <item>Diesel</item>
+        <item>Benzyna</item>
+        <item>Benzyna + Gaz</item>
+        <item>Elektryczny</item>
+        <item>Hybryda</item>
+        <item>Gaz</item>
+    </string-array>
+
+    <!-- transmission types -->
+    <string name="choose_a_transmission">Wybierz rodzaj skrzyni biegów</string>
+    <string-array name="transmission_types">
+        <item>Manuala</item>
+        <item>Automatyczna</item>
+    </string-array>
+
+    <!-- odometer units -->
+    <string name="choose_a_odometer_unit">Wybierz jednostkę miary</string>
+    <string-array name="odometer_units">
+        <item>Mile</item>
+        <item>Metryczne</item>
+    </string-array>
+
+    <!-- body types -->
+    <string name="choose_a_body_type">Wybierz rodzaj karoserii</string>
+    <string-array name="body_types">
+        <item>Kabriolet</item>
+        <item>Coupe</item>
+        <item>Kombi</item>
+        <item>Sedan</item>
+        <item>SUV</item>
+        <item>Dual cowl</item>
+        <item>Fastback</item>
+        <item>Hatchback</item>
+        <item>Liftback</item>
+        <item>Limuzyna</item>
+        <item>Mikrovan</item>
+        <item>Minivan</item>
+        <item>Pick-up</item>
+        <item>Roadster</item>
+        <item>Targa</item>
+        <item>VAN</item>
+    </string-array>
+    <string name="title_activity_main">Główna aktywność</string>
+    <string name="title_activity_add_fueling">Dodaj tankowania</string>
+    <string name="title_activity_fueling">Lista tankowań</string>
+
+    <!-- Vehicle elements -->
+    <string name="make">Marka</string>
+    <string name="model">Model</string>
+    <string name="year_of_manufacture">Rok produkcji</string>
+    <string name="weight">Waga</string>
+    <string name="fuel">Paliwo</string>
+    <string name="licence_number">Numer rejestracyjny</string>
+    <string name="power">Moc</string>
+    <string name="engine_capacity">Pojemność silnika</string>
+    <string name="odometer">Licznik</string>
+    <string name="transmission">Skrzynia biegów</string>
+    <string name="odometer_unit">Jednostka miary</string>
+    <string name="body">Karoseria</string>
+
+    <!-- Fueling elements -->
+    <string name="date">Data</string>
+    <string name="trip">Trip</string>
+    <string name="quantity">Ilość</string>
+    <string name="full_fueling">Pełne tankowanie</string>
+    <string name="cost">Koszt</string>
+    <string name="average_consumption">Średnie zużycie paliwa</string>
+    <string name="fuel_unit_cost">Cena jednostkowa paliwa</string>
+    <string name="extras">Dodatki</string>
+    <string name="driving_style">Styl jazdy</string>
+    <string name="routes">Trasy</string>
+    <string name="tires">Opony</string>
+
+    <!-- Menu elements -->
+    <string name="fueling">Tankowanie</string>
+    <string name="title_activity_fueling_details">Szczegóły tankowania</string>
+
+</resources>
